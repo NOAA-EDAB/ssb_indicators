@@ -1,0 +1,30 @@
+Order programs should be run for Profitablity Indices.
+1) First run "trip_cost_data_construct_12122024.R"  
+
+This updates the information from Sam's trip cost models. Data are saved 
+to file "sam_trip_cost_v2.RData". For future years, this may only need to be 
+updated for the latest year's data. More discussion is needed about how the 
+trip costs are estimated each year and whether past values need to be updtated.
+GDP data are also pulled form the BEA and saved into a R data set: "GDPD.RData"
+
+Note: Labor costs are not part of these data. An external value for labor cost 
+could be included, but I didn't do so for this preliminary version. 
+
+2) Run "fishery_ebfm_cost_12132024.R"
+
+The program pulls lat and lon data from CAMS_GARFO.CAMS_SUBTRIP for the years 
+2010-2023 and combines it with "sam_trip_cost__v2.RData." This is then appended 
+to the years 2000-2009 cost and location data which were saved in an 
+external file. the combined data are then saved in: "trip_cost_spatial.RData")
+
+3) Run "trip_allocate_by_EPU_12132024.R"
+
+This takes the data found in "trip_cost_spatial.RData" and allocates it to 
+specific EPU's. Three data files are produced from this program, one for each 
+EPU.  "GB_cost.RData", "GOM_cost.RData", "MAB_cost.RData".
+
+4) Run "profitability_indices_12132024.R"
+
+This creates a Cost index (CI), Revenue Index (RI), and Profitability Index by 
+EPU. Plots are by individual EPU, and there is one plot which shows the PI for 
+all three regions.

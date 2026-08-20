@@ -1,4 +1,4 @@
-# EDAB Template Github Repository
+# Socioeconomic Indicators for the SOE
 
 ## Contact
 
